@@ -12,7 +12,7 @@ export default function ColorPicker() {
     return (
         <View style={{marginBottom: 20, alignItems: 'center' }}>
           <View style={{backgroundColor: color, width: 100, height: 100, borderRadius: 75, borderWidth: 2, borderColor: 'blue', marginBottom: 20,}}></View>
-            <Button color="#9e9e9e" title="Change color" onPress={changeColor}></Button>
+            <Button color="#3f51b5" title="Change color" onPress={changeColor}></Button>
         </View>
     )
 };
