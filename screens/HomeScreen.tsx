@@ -12,13 +12,14 @@ import TextName from '../components/TextName/TextName';
 export default function HomeScreen({ navigation }) {
     const { width, height } = useWindowDimensions();
     const [modalVisible, setModalVisible] = useState<boolean>(false);
-    const [storeName, setStoreName] = useState<string | null>('');
+    const [storeName, setStoreName] = useState<string>('');
 
   return (
       <ScrollView style={{ flex: 1}}>
         
-      <ImageBackground style={{width: '100%', height: '100%'}} resizeMode='cover' source={(require('../assets/background.jpg'))}>
-        <ModalContainer isShown={modalVisible} onClose={setModalVisible} />
+      <ImageBackground style={styles.background} resizeMode='cover' source={(require('../assets/background.jpg'))}>
+        
+        
               
         <View style={[styles.container, { marginVertical: 30}]}>
             <Image style={styles.img} source={require('../assets/react-logo.png')} />
@@ -36,7 +37,7 @@ export default function HomeScreen({ navigation }) {
        
        <ColorPicker/>
         
-        <ShowGreetingBtn onOpen={(type) => { setModalVisible(type) }} />
+        <ModalContainer />
               
         <Form onSave={setStoreName}/>
         
@@ -51,12 +52,14 @@ export default function HomeScreen({ navigation }) {
 
 interface Styles {
   container: ViewStyle,
+  background: ImageStyle,
   img: ImageStyle,
   text: TextStyle,
 }
 
 const styles = StyleSheet.create<Styles>({
-  container: {alignItems: 'center'},
+  container: { alignItems: 'center' },
+  background: {width: '100%', height: '100%'},
   img: { width: 50, height: 50 },
   text: {fontSize: 15, fontWeight: 'bold', marginBottom: 20},
 });

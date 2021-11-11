@@ -1,28 +1,41 @@
 import React, {useState} from 'react';
-import { View, Modal, Button, Text } from 'react-native';
+import { View, Modal, Button, Text, ViewStyle, StyleSheet, TextStyle } from 'react-native';
 
-interface IProps {
-    isShown: boolean,
-    onClose: (type: boolean) => {}
-}
 
-export default function ModalContainer({ isShown, onClose }: IProps) {
+export default function ModalContainer() {
+     const [modalVisible, setModalVisible] = useState<boolean>(false);
     return (
-        <View style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+        <View style={ {alignItems: 'center' }}>
+            
+            <View style={styles.container}>
+            <Button title="Show Greeting" onPress={()=> setModalVisible(true)}/>
+            </View>
+
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={isShown}
+                visible={modalVisible}
                 onRequestClose={() => {
-                    onClose(!isShown);
+                    setModalVisible(!modalVisible);
                 }}
             >
-                <View style={{ flex: 1, backgroundColor: '#000000ad', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 50, color: 'white', marginBottom: 20 }}>Hello !</Text>
-                    <Button title='Hide Greetings' onPress={(() => onClose(!isShown))} />
+                <View style={styles.btnContainer}>
+                    <Text style={styles.text}>Hello !</Text>
+                    <Button title='Hide Greetings' onPress={(() => setModalVisible(!modalVisible))} />
                 </View>
             </Modal>
         </View>
     )
 };
 
+interface Styles {
+    container: ViewStyle,
+    btnContainer: ViewStyle,
+    text: TextStyle,
+}
+
+const styles = StyleSheet.create<Styles>({
+    container: { alignItems: "center", marginBottom: 30 },
+    btnContainer: { flex: 1, backgroundColor: '#000000ad', alignItems: 'center', justifyContent: 'center' },
+    text: { fontSize: 50, color: 'white', marginBottom: 20 },
+})
