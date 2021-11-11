@@ -20,9 +20,9 @@ function MyTabs() {
 const App = () => {
   return (
     <NavigationContainer >
-      <SafeAreaView style={styles.container}>
+      {/* <SafeAreaView style={styles.container}> */}
       <MyTabs />
-      </SafeAreaView>
+      {/* </SafeAreaView> */}
     </NavigationContainer>
   );
 }

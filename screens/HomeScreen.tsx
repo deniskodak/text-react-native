@@ -17,10 +17,10 @@ export default function HomeScreen({ navigation }) {
   return (
       <View style={{ flex: 1}}>
         
-      <ImageBackground style={{flex: 1, width: '100%', height: '100%'}} resizeMode='cover' source={(require('../assets/background.jpg'))}>
-              <ModalContainer isShown={modalVisible} onClose={setModalVisible} />
+      <ImageBackground style={{width: '100%', height: '100%'}} resizeMode='cover' source={(require('../assets/background.jpg'))}>
+        <ModalContainer isShown={modalVisible} onClose={setModalVisible} />
               
-        <View style={{ alignItems: 'center', marginVertical: 50 }}>
+        <View style={{ alignItems: 'center', marginVertical: 30 }}>
             <Image style={{width: 50, height: 50}} source={require('../assets/react-logo.png')} />
         </View>
               

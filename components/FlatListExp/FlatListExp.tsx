@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, StatusBar, Text } from 'react-native';
+import { View, FlatList, StyleSheet, Text } from 'react-native';
 
 const DATA = [
   {
@@ -59,14 +59,13 @@ export default function FlatLists() {
 };
 
 const styles = StyleSheet.create({
-    listContainer: {
-    flex: 1,
-    marginBottom: 50,
+  listContainer: {
+    marginBottom: 30,
     flexDirection: 'row',
   },
 
   listSubContainer: {
-    height: 250,
+    height: 100,
     marginHorizontal: 20,
   },
   item: {
