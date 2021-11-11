@@ -60,7 +60,7 @@ export default function FlatLists() {
 
 const styles = StyleSheet.create({
   listContainer: {
-    marginBottom: 30,
+    marginBottom: 5,
     flexDirection: 'row',
   },
 

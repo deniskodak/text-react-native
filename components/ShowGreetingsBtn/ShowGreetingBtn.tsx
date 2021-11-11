@@ -7,7 +7,7 @@ interface IProps {
 export default function ShowGreetingBtn({onOpen} : IProps) {
     
     return (
-        <View style={{alignItems: "center", marginBottom: 50}}>
+        <View style={{alignItems: "center", marginBottom: 30}}>
           <Button title="Show Greeting" onPress={()=> onOpen(true)}/>
         </View>
     )
