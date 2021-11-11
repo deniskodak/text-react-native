@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, ImageBackground, useWindowDimensions, ScrollView, Image, Platform, KeyboardAvoidingView, Button, Modal, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { TextStyle, View, ViewStyle, StyleSheet, Text, ImageStyle, ImageBackground, useWindowDimensions, ScrollView, Image, Platform, KeyboardAvoidingView, Button, Modal, TextInput } from 'react-native';
 import ImagePickerExample from '../components/ImagePicker/ImagePicker';
 import FlatLists from '../components/FlatListExp/FlatListExp';
 import ModalContainer from '../components/Modal/Modal';
@@ -15,20 +15,20 @@ export default function HomeScreen({ navigation }) {
     const [storeName, setStoreName] = useState<string | null>('');
 
   return (
-      <View style={{ flex: 1}}>
+      <ScrollView style={{ flex: 1}}>
         
       <ImageBackground style={{width: '100%', height: '100%'}} resizeMode='cover' source={(require('../assets/background.jpg'))}>
         <ModalContainer isShown={modalVisible} onClose={setModalVisible} />
               
-        <View style={{ alignItems: 'center', marginVertical: 30 }}>
-            <Image style={{width: 50, height: 50}} source={require('../assets/react-logo.png')} />
+        <View style={[styles.container, { marginVertical: 30}]}>
+            <Image style={styles.img} source={require('../assets/react-logo.png')} />
         </View>
               
-        <View style={{alignItems: 'center'}}>
-          <Text style={{fontSize: 15, fontWeight: 'bold', marginBottom: 20}}>Window is {width}x{height}</Text>
+        <View style={styles.container}>
+          <Text style={styles.text}>Window is {width}x{height}</Text>
         </View>
               
-        <View style={{marginBottom: 20, alignItems: 'center'}}>
+        <View style={[styles.container, {marginBottom: 20}]}>
                   <Button  color="#9e9e9e" title='Go to Settings' onPress={ () => {navigation.navigate('Settings')}} />
         </View>
         
@@ -44,9 +44,19 @@ export default function HomeScreen({ navigation }) {
 
         <TextName name={storeName}/>
 
-
           </ImageBackground>
-        </View>
+        </ScrollView>
   );
 };
 
+interface Styles {
+  container: ViewStyle,
+  img: ImageStyle,
+  text: TextStyle,
+}
+
+const styles = StyleSheet.create<Styles>({
+  container: {alignItems: 'center'},
+  img: { width: 50, height: 50 },
+  text: {fontSize: 15, fontWeight: 'bold', marginBottom: 20},
+});

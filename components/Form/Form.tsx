@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { View, ScrollView, Button, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
+import { View, ScrollView, Button, KeyboardAvoidingView, Platform, TextInput, StyleSheet, TextStyle , ViewStyle } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface IProps {
-}
 
 export default function Form({ onSave }) {
     
@@ -39,18 +37,31 @@ export default function Form({ onSave }) {
     }, [])
 
     return (
-        <View style={{ height: 100, marginHorizontal: 50, marginBottom: 50}}>
+        <View style={styles.container}>
         <ScrollView >
           <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
-          <View style={{flexDirection: 'row', marginBottom: 20}}>
-                <TextInput style={{flexGrow: 1, padding: 20, marginRight: 30, backgroundColor: '#ffffff'}} placeholder="name" onChangeText={(text:string) => setName(text)} value={name} />
+          <View style={styles.subContainer}>
+                <TextInput style={styles.input} placeholder="name" onChangeText={(text:string) => setName(text)} value={name} />
                 <Button color="#9e9e9e" title='Store Name' onPress={() => { storeData(name); setName('')}}/>
             </View>
-              <TextInput style={{ padding: 20, backgroundColor: '#ffffff' }} placeholder="password" value={password} onChangeText={(text: string) => setPassword(text)}/>
+              <TextInput style={styles.inputPassword} placeholder="password" value={password} onChangeText={(text: string) => setPassword(text)}/>
         </KeyboardAvoidingView>
         </ScrollView>
         </View>
     )
+};
+
+interface Styles {
+    container: ViewStyle,
+    subContainer: ViewStyle,
+    input: TextStyle,
+    inputPassword: TextStyle,
 }
+const styles = StyleSheet.create<Styles>({
+  container: { height: 100, marginHorizontal: 50, marginBottom: 50},
+    subContainer: { flexDirection: 'row', marginBottom: 20 },
+    input: { flexGrow: 1, padding: 20, marginRight: 30, backgroundColor: '#ffffff' },
+    inputPassword: { padding: 20, backgroundColor: '#ffffff' }
+});
